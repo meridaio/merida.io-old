@@ -1,8 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import Navbar from "react-bootstrap/Navbar"
-import Helmet from "react-helmet"
+import './header.css'
 
 type Title = {
   siteTitle : string
@@ -10,18 +9,33 @@ type Title = {
 
 const Header = ({ siteTitle } : Title) => (
   <>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    />
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand>
-        <Link to="/">
-          {siteTitle}
-        </Link>
-      </Navbar.Brand>
-    </Navbar>
+    <header style={{
+      marginBottom: `1.45rem`,
+      background: `teal`
+    }}>
+      <div style={{
+        margin: `0 auto`,
+        maxWidth: 960,
+        padding: `1.45rem 1.0875rem`
+      }}>
+        <h1 style={{ margin: 0 }}>
+          <Link to="/" style={{ color: `white` }}>
+            {siteTitle}
+          </Link>
+        </h1>
+      </div>
+    </header>
+    <div className="format">
+      <Link to="/" className="headerLink">
+        Home
+      </Link>
+      <Link to="/blog" className="headerLink">
+        Blog
+      </Link>
+      <Link to="/resume" className="headerLink">
+        Resume
+      </Link>
+    </div>
   </>
 )
 
@@ -30,7 +44,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  siteTitle: `merida.io`,
 }
 
 export default Header
