@@ -1,6 +1,8 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import GitHub from "./github"
+
 import './header.css'
 
 type Title = {
@@ -22,6 +24,7 @@ const Header = ({ siteTitle } : Title) => (
           <Link to="/" style={{ color: `white` }}>
             {siteTitle}
           </Link>
+          <GitHub />
         </h1>
       </div>
     </header>

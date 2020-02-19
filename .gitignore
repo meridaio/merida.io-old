@@ -71,4 +71,5 @@ yarn-error.log
 # Purescript
 .spago/
 output/
+.psci_modules/
 .psc-ide-port

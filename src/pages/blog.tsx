@@ -1,8 +1,9 @@
 import React from 'react'
 
 import Layout from '../components/layout'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import SEO from '../components/seo'
+import { mkBlog } from '../../output/Page.Blog'
 
 const Blog: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -21,16 +22,11 @@ const Blog: React.FC = () => {
     }
   `)
 
+  const Blog = mkBlog(data.allMarkdownRemark.edges.map(x => x.node.frontmatter))()
   return (
     <Layout>
       <SEO title="Blog" />
-      <p>blog!</p>
-      <ul>
-        {data.allMarkdownRemark.edges
-          .sort((x, y) => x.node.frontmatter.date < y.node.frontmatter.date)
-          .map(x => <li><Link to={x.node.frontmatter.path}>{x.node.frontmatter.title}</Link></li>)
-        }
-      </ul>
+      <Blog />
     </Layout>
   )
 }
